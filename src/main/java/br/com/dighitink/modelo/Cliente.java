@@ -6,5 +6,4 @@ public class Cliente {
    public Integer idade ;
    public String documento ;
    
-    
 }

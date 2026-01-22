@@ -1,6 +1,7 @@
 package br.com.dighitink;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import br.com.dighitink.modelo.Cliente;
@@ -11,9 +12,9 @@ public class RentCar {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Scanner scanner = new Scanner(System.in);
-        Cliente cliente = new Cliente();
-        Veiculo veiculo = new Veiculo();
-
+        ArrayList<Cliente> clientesList = new ArrayList<>();
+        ArrayList<Veiculo> VeiculoList = new ArrayList<>();
+      
         while (true) {
 
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -38,22 +39,22 @@ public class RentCar {
 
                     System.out.println("Digite o nome do cliente:");
                     String nomeCliente = scanner.nextLine();
-
+                    
                     System.out.println("Digite a idade do Cliente:");
                     Integer idadeCliente = scanner.nextInt();
                     scanner.nextLine();
-
+                    
                     System.out.println("Documento Cliente:");
                     String documentoCliente = scanner.nextLine();
-
-                    cliente.nome = nomeCliente;
-                    cliente.idade = idadeCliente;
-                    cliente.documento = documentoCliente;                    
-                    System.out.println("Cadastro realizado com sucesso");
-                    System.out.println("Enter para continuar");
                     
+                    Cliente clienteInput = new Cliente();
+                    clienteInput.nome = nomeCliente;
+                    clienteInput.idade = idadeCliente;
+                    clienteInput.documento = documentoCliente;                    
+                    clientesList.add(clienteInput);
 
-
+                    System.out.println("Cadastro realizado com sucesso!");
+                    System.out.println("Pressione enter para continuar...");
                     scanner.nextLine();
 
                     break;
@@ -65,10 +66,13 @@ public class RentCar {
                     System.out.println("Visualizar Clientes");
                     System.out.println("##################");
 
-                    System.out.println("nome Cliente: " + cliente.nome);
-                    System.out.println("Idade do Cliente: " + cliente.idade);
-                    System.out.println("Documento do Cliente: "+ cliente.documento);
+                    for(Cliente cliente:clientesList){
+                        System.out.println("\nnome Cliente: " + cliente.nome);
+                        System.out.println("Idade do Cliente: " + cliente.idade);
+                        System.out.println("Documento do Cliente: "+ cliente.documento);
+                    }
                     scanner.nextLine();
+                    
 
                     break;
 
@@ -84,10 +88,12 @@ public class RentCar {
                     System.out.println("Digite o ano do Veículo ");
                     Integer anoVeiculo = scanner.nextInt();
                     scanner.nextLine();
-
-                    veiculo.modelo = nomeVeiculo;
-                    veiculo.marca = marcaVeiculo;
-                    veiculo.ano = anoVeiculo;
+                    
+                    Veiculo veiculoinput = new Veiculo();
+                    veiculoinput.modelo = nomeVeiculo;
+                    veiculoinput.marca = marcaVeiculo;
+                    veiculoinput.ano = anoVeiculo;
+                    VeiculoList.add(veiculoinput);
                     System.out.println("Cadastro realizao com sucesso");
                     System.out.println("Enter para continuar");
 
@@ -102,14 +108,28 @@ public class RentCar {
                      System.out.println("Visualizar Veículos");
                      System.out.println("###################");
 
-                     System.out.println("Nome do Modelo: " + veiculo.modelo);
-                     System.out.println("Marca do Veículo: " + veiculo.marca);
-                     System.out.println("Ano do Veículo: " + veiculo.ano);
-                     scanner.nextLine();
+                     System.out.println(VeiculoList.size());
+
+                    for(Veiculo veiculo:VeiculoList){
+                          System.out.println("Nome do Modelo: " + veiculo.modelo);
+                          System.out.println("Marca do Veículo: " + veiculo.marca);
+                          System.out.println("Ano do Veículo: " + veiculo.ano);
+                    }
+                   
+                    scanner.nextLine();
+                    break;
+                    
 
 
                 default:
                     System.out.println("enter para continuar");
+
+                case 5:
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    System.out.println("Aperte Enter para sair do Sistema.");
+                    scanner.nextLine();
+                    scanner.close();
+
 
             }
         }
