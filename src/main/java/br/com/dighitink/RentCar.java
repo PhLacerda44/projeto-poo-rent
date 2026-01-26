@@ -26,7 +26,7 @@ public class RentCar {
             System.out.println("2 - Visualizar Clientes: ");
             System.out.println("3 - Cadastras Veículo: ");
             System.out.println("4 - Visualizar Veículo: ");
-            System.out.println("5 - Sair do Sistema: ");
+            System.out.println("5 - Alugar ");
 
             System.out.print("Selecione uma opção: ");
             int marcar = scanner.nextInt();
@@ -118,20 +118,28 @@ public class RentCar {
                    
                     scanner.nextLine();
                     break;
-                    
-
-
-                default:
-                    System.out.println("enter para continuar");
 
                 case 5:
+                    
+                    
+
+                break;
+
+                case 6:
                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
                     System.out.println("Aperte Enter para sair do Sistema.");
                     scanner.nextLine();
                     scanner.close();
+                    break;
 
-
+                    
+                default:
+                    
+                    System.out.println("Pressione enter para continuar");
+                    scanner.nextLine();
+                        
             }
+
         }
     }
 
