@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import br.com.dighitink.modelo.Aluguel;
 import br.com.dighitink.modelo.Cliente;
 import br.com.dighitink.modelo.Veiculo;
 
@@ -13,8 +14,8 @@ public class RentCar {
 
         Scanner scanner = new Scanner(System.in);
         ArrayList<Cliente> clientesList = new ArrayList<>();
-        ArrayList<Veiculo> VeiculoList = new ArrayList<>();
-      
+        ArrayList<Veiculo> veiculoList = new ArrayList<>();
+
         while (true) {
 
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -24,9 +25,10 @@ public class RentCar {
 
             System.out.println("1 - Cadastrar clientes: ");
             System.out.println("2 - Visualizar Clientes: ");
-            System.out.println("3 - Cadastras Veículo: ");
+            System.out.println("3 - Cadastrar Veículo: ");
             System.out.println("4 - Visualizar Veículo: ");
-            System.out.println("5 - Alugar ");
+            System.out.println("5 - Aluguel de Veículos");
+            System.out.println("6 - Sair do Sistema: ");
 
             System.out.print("Selecione uma opção: ");
             int marcar = scanner.nextInt();
@@ -62,12 +64,15 @@ public class RentCar {
                 case 2:
                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
-                    System.out.println("##################");
-                    System.out.println("Visualizar Clientes");
-                    System.out.println("##################");
+                    
+                    System.out.println("-----------------------------------------");
+                    System.out.println("         Clientes Cadastrados");
+                    System.out.println("-----------------------------------------");
+                    
+                     System.out.println(clientesList.size());
 
                     for(Cliente cliente:clientesList){
-                        System.out.println("\nnome Cliente: " + cliente.nome);
+                        System.out.println("\nNome Cliente: " + cliente.nome);
                         System.out.println("Idade do Cliente: " + cliente.idade);
                         System.out.println("Documento do Cliente: "+ cliente.documento);
                     }
@@ -93,9 +98,9 @@ public class RentCar {
                     veiculoinput.modelo = nomeVeiculo;
                     veiculoinput.marca = marcaVeiculo;
                     veiculoinput.ano = anoVeiculo;
-                    VeiculoList.add(veiculoinput);
-                    System.out.println("Cadastro realizao com sucesso");
-                    System.out.println("Enter para continuar");
+                    veiculoList.add(veiculoinput);
+                    System.out.println("Cadastro realizado com sucesso");
+                    System.out.println("Aperte Enter para continuar");
 
                     scanner.nextLine();
 
@@ -104,14 +109,16 @@ public class RentCar {
                 case 4:
                      new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
-                     System.out.println("###################");
-                     System.out.println("Visualizar Veículos");
-                     System.out.println("###################");
 
-                     System.out.println(VeiculoList.size());
+                     
+                    System.out.println("-----------------------------------------");
+                    System.out.println("        Veículos  Cadastrados");
+                    System.out.println("-----------------------------------------");
 
-                    for(Veiculo veiculo:VeiculoList){
-                          System.out.println("Nome do Modelo: " + veiculo.modelo);
+                     System.out.println(veiculoList.size());
+
+                    for(Veiculo veiculo:veiculoList){
+                          System.out.println("\nNome do Modelo: " + veiculo.modelo);
                           System.out.println("Marca do Veículo: " + veiculo.marca);
                           System.out.println("Ano do Veículo: " + veiculo.ano);
                     }
@@ -120,9 +127,62 @@ public class RentCar {
                     break;
 
                 case 5:
-                    
-                    
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
+                    System.out.println("##################");
+                    System.out.println("     Locação     ");
+                    System.out.println("##################");
+
+                    System.out.println("-----------------------------------------");
+                    System.out.println("Código \t Nome");
+                    System.out.println("-----------------------------------------");
+
+                    int posicaoCliente = 0;
+                    for(Cliente cliente:clientesList){
+                        System.out.println(posicaoCliente+" \t "+cliente.nome);
+                        posicaoCliente++;
+                    }
+
+                    System.out.println("Informe o código do cliente:");
+                    int codigoCliente = scanner.nextInt();
+                    scanner.nextLine();
+                    
+                    System.out.println("Cliente selecionado:");
+                    Cliente clienteSelecionado = clientesList.get(codigoCliente);
+                    System.out.println(clienteSelecionado.nome);
+
+                    System.out.println("------------------------------------------");
+                    System.out.println("Código \t Veículo");
+                    System.out.println("------------------------------------------");
+
+                    int posicaoVeiculo = 0;
+                    for(Veiculo veiculo:veiculoList){
+                        System.out.println(posicaoVeiculo+ "\t" +veiculo.modelo);
+                        posicaoVeiculo++;
+                    }
+
+                    System.out.println("Informe o código do veículo:");
+                    int codigoVeiculo = scanner.nextInt();
+                    scanner.nextLine();
+
+
+                    System.out.println("Informe a quantidade de dias de aluguel:");
+                    int quantidadeDias = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.err.println("Veículo selecionado");
+                    Veiculo veiculoSelecionado = veiculoList.get(codigoVeiculo);
+                    System.out.println(veiculoSelecionado.modelo);
+
+                    Aluguel aluguel = new Aluguel();
+                    aluguel.cliente = clienteSelecionado;
+                    aluguel.veiculo = veiculoSelecionado;
+                    aluguel.quantidadeDias = quantidadeDias;
+
+                    aluguel.mostrarDadosAluguel();
+
+                    scanner.nextLine();
+                    
                 break;
 
                 case 6:
