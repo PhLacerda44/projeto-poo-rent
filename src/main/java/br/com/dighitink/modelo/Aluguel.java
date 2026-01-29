@@ -17,8 +17,11 @@ public class Aluguel {
         System.out.println("Veículo Alugado:" + veiculo.modelo + "-"+veiculo.ano);
         System.out.println("Quantidade de dias:"+ quantidadeDias);
         System.out.println("Total do aluguel: "+totalAluguel);
-        
+    }
 
+    public void totalapagar(){
+        Double valordia = 150.0;
+    
     }
 
     
