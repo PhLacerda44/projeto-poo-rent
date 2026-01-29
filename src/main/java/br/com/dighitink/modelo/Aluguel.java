@@ -19,8 +19,10 @@ public class Aluguel {
         System.out.println("Total do aluguel: "+totalAluguel);
     }
 
-    public void totalapagar(){
-        Double valordia = 150.0;
+    public Double totalapagar(){
+        Double valordodia = 150.00;
+        Double total = valordodia*quantidadeDias;
+        return total;
     
     }
 

@@ -199,13 +199,14 @@ public class RentCar {
                     System.out.println("               Aluguéis");
                     System.out.println("------------------------------------------");
 
-                    System.out.println("Cliente\t\tVeículo");
+                    System.out.println("Cliente\\tVeículo\\tValor");
                     System.out.println("------------------------------------------");
 
                      for (Aluguel aluguelRealizado : alugueisList) {
                         System.out.println(
-                        aluguelRealizado.cliente.nome + "\t\t" +
-                        aluguelRealizado.veiculo.modelo
+                        aluguelRealizado.cliente.nome + "\t" +
+                        aluguelRealizado.veiculo.modelo + "\t" +
+                        aluguelRealizado.totalapagar()
                     );
                     scanner.nextLine();
                 }
