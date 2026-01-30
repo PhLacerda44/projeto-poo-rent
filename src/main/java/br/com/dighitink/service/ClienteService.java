@@ -1,0 +1,43 @@
+package br.com.dighitink.service;
+
+import java.util.Scanner;
+
+import br.com.dighitink.modelo.Cliente;
+
+public class ClienteService {
+
+     Scanner scanner = new Scanner(System.in);
+
+    public Cliente geraCliente(){
+
+        System.out.println("Digite o nome do cliente:");
+        String nomeCliente = scanner.nextLine();
+        
+        System.out.println("Digite a idade do Cliente:");
+        Integer idadeCliente = scanner.nextInt();
+        scanner.nextLine();
+
+        if (idadeCliente < 18) {
+            System.out.println("-----------------------------------------");
+            System.out.println("Não é possível Concluir o cadastro!.");
+            System.out.println("-----------------------------------------");
+            System.out.println("Menor de 18 anos!");
+            System.out.println("Pressione Enter para continuar");
+            scanner.nextLine();
+            return null;
+        }
+
+        
+        System.out.println("Documento Cliente:");
+        String documentoCliente = scanner.nextLine();
+        
+        Cliente clienteInput = new Cliente();
+        clienteInput.nome = nomeCliente;
+        clienteInput.idade = idadeCliente;
+        clienteInput.documento = documentoCliente;
+        
+        return clienteInput;
+
+    }
+    
+}

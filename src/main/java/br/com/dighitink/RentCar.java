@@ -7,6 +7,9 @@ import java.util.Scanner;
 import br.com.dighitink.modelo.Aluguel;
 import br.com.dighitink.modelo.Cliente;
 import br.com.dighitink.modelo.Veiculo;
+import br.com.dighitink.service.ClienteService;
+import br.com.dighitink.service.VeiculoService;
+import br.com.dighitink.util.Utilitarios;
 
 public class RentCar {
 
@@ -16,11 +19,14 @@ public class RentCar {
         ArrayList<Cliente> clientesList = new ArrayList<>();
         ArrayList<Veiculo> veiculoList = new ArrayList<>();
         ArrayList<Aluguel> alugueisList = new ArrayList<>();
-
+        ClienteService clienteService = new ClienteService();
+        VeiculoService veiculoService = new VeiculoService();
 
         while (true) {
+            
+            Utilitarios.limparTela();
 
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+
             System.out.println("##################");
             System.out.println( "    RentCar");
             System.out.println("##################");
@@ -40,24 +46,11 @@ public class RentCar {
             switch (marcar) {
 
                 case 1:
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    
+                    Cliente clienteInput = clienteService.geraCliente();
+                    if(clienteInput==null) break;
 
-                    System.out.println("Digite o nome do cliente:");
-                    String nomeCliente = scanner.nextLine();
-                    
-                    System.out.println("Digite a idade do Cliente:");
-                    Integer idadeCliente = scanner.nextInt();
-                    scanner.nextLine();
-                    
-                    System.out.println("Documento Cliente:");
-                    String documentoCliente = scanner.nextLine();
-                    
-                    Cliente clienteInput = new Cliente();
-                    clienteInput.nome = nomeCliente;
-                    clienteInput.idade = idadeCliente;
-                    clienteInput.documento = documentoCliente;                    
                     clientesList.add(clienteInput);
-
 
                     System.out.println("Cadastro realizado com sucesso!");
                     System.out.println("Pressione enter para continuar...");
@@ -66,8 +59,7 @@ public class RentCar {
                     break;
 
                 case 2:
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-
+                    Utilitarios.limparTela();
                     
                     System.out.println("-----------------------------------------");
                     System.out.println("         Clientes Cadastrados");
@@ -86,32 +78,18 @@ public class RentCar {
                     break;
 
                 case 3:
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    Utilitarios.limparTela();
 
-                    System.out.println("Digite o nome do Veículo:");
-                    String nomeVeiculo = scanner.nextLine();
-
-                    System.out.println("Digite a marca do Veículo");
-                    String marcaVeiculo = scanner.nextLine();
-
-                    System.out.println("Digite o ano do Veículo ");
-                    Integer anoVeiculo = scanner.nextInt();
-                    scanner.nextLine();
+                    Veiculo veiculoinput = veiculoService.geraVeiculo();
                     
-                    Veiculo veiculoinput = new Veiculo();
-                    veiculoinput.modelo = nomeVeiculo;
-                    veiculoinput.marca = marcaVeiculo;
-                    veiculoinput.ano = anoVeiculo;
                     veiculoList.add(veiculoinput);
-                    System.out.println("Cadastro realizado com sucesso");
-                    System.out.println("Aperte Enter para continuar");
 
                     scanner.nextLine();
 
                     break;
 
                 case 4:
-                     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                     Utilitarios.limparTela();
 
 
                      
@@ -131,7 +109,7 @@ public class RentCar {
                     break;
 
                 case 5:
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    Utilitarios.limparTela();
 
                     System.out.println("##################");
                     System.out.println("     Locação     ");
@@ -147,14 +125,15 @@ public class RentCar {
                         posicaoCliente++;
                     }
 
-                    System.out.println("Informe o código do cliente:");
+                    System.out.println("\tInforme o código do cliente:");
                     int codigoCliente = scanner.nextInt();
                     scanner.nextLine();
                     
-                    System.out.println("Cliente selecionado:");
+                    System.out.println("\tCliente selecionado:");
                     Cliente clienteSelecionado = clientesList.get(codigoCliente);
                     System.out.println(clienteSelecionado.nome);
 
+                    
                     System.out.println("------------------------------------------");
                     System.out.println("Código \t Veículo");
                     System.out.println("------------------------------------------");
@@ -193,16 +172,16 @@ public class RentCar {
                 break;
 
                 case 6:
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    Utilitarios.limparTela();
 
                     System.out.println("------------------------------------------");
                     System.out.println("               Aluguéis");
                     System.out.println("------------------------------------------");
 
-                    System.out.println("Cliente\\tVeículo\\tValor");
+                    System.out.println("Cliente\t\tVeículo\t\tValor");
                     System.out.println("------------------------------------------");
 
-                     for (Aluguel aluguelRealizado : alugueisList) {
+                    for (Aluguel aluguelRealizado : alugueisList) {
                         System.out.println(
                         aluguelRealizado.cliente.nome + "\t" +
                         aluguelRealizado.veiculo.modelo + "\t" +
@@ -213,7 +192,7 @@ public class RentCar {
                     break;
 
                 case 7:
-                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                    Utilitarios.limparTela();
                     System.out.println("Aperte Enter para sair do Sistema.");
                     scanner.nextLine();
                     scanner.close();
