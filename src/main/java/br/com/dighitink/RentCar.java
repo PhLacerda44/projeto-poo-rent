@@ -46,6 +46,7 @@ public class RentCar {
             switch (marcar) {
 
                 case 1:
+                    Utilitarios.limparTela();
                     
                     Cliente clienteInput = clienteService.geraCliente();
                     if(clienteInput==null) break;
