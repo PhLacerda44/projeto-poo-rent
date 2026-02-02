@@ -68,10 +68,18 @@ public class RentCar {
                     
                      System.out.println(clientesList.size());
 
+                     
+                    System.out.println("-----------------------------------------");
+                    System.out.println("Cliente\t\tidade\t\tDocumento");
+                    System.out.println("-----------------------------------------");
+
+
                     for(Cliente cliente:clientesList){
-                        System.out.println("\nNome Cliente: " + cliente.nome);
-                        System.out.println("Idade do Cliente: " + cliente.idade);
-                        System.out.println("Documento do Cliente: "+ cliente.documento);
+                        System.out.println(
+                         cliente.nome + "\t\t" +
+                         cliente.idade + "\t\t" +
+                         cliente.documento
+                        );
                     }
                     scanner.nextLine();
                     
@@ -93,18 +101,26 @@ public class RentCar {
                 case 4:
                      Utilitarios.limparTela();
 
+                     System.out.println("----------------------------------------");
+                     System.out.println("          Veículos Cadastrados");
+                     System.out.println("----------------------------------------");
+
+                       System.out.println(veiculoList.size());
+
 
                      
                     System.out.println("-----------------------------------------");
-                    System.out.println("        Veículos  Cadastrados");
+                    System.out.println("Modelo\t\tMarca\t\tAno");
                     System.out.println("-----------------------------------------");
 
-                     System.out.println(veiculoList.size());
+     
 
                     for(Veiculo veiculo:veiculoList){
-                          System.out.println("\nNome do Modelo: " + veiculo.modelo);
-                          System.out.println("Marca do Veículo: " + veiculo.marca);
-                          System.out.println("Ano do Veículo: " + veiculo.ano);
+                        System.out.println(
+                        veiculo.modelo + "\t\t" +
+                        veiculo.marca + "\t\t" +
+                        veiculo.ano
+                        );
                     }
                    
                     scanner.nextLine();
@@ -176,18 +192,19 @@ public class RentCar {
                 case 6:
                     Utilitarios.limparTela();
 
-                    System.out.println("------------------------------------------");
-                    System.out.println("               Aluguéis");
-                    System.out.println("------------------------------------------");
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println("                       Aluguéis");
+                    System.out.println("------------------------------------------------------------");
 
-                    System.out.println("Cliente\t\tVeículo\t\tValor");
-                    System.out.println("------------------------------------------");
+                    System.out.println("Cliente\t\tVeículo\t\t\tDias\t\tValor");
+                    System.out.println("------------------------------------------------------------");
 
                     for (Aluguel aluguelRealizado : alugueisList) {
                         System.out.println(
                         aluguelRealizado.cliente.nome + "\t\t" +
-                        aluguelRealizado.veiculo.modelo + "\t\t" +
-                        aluguelRealizado.totalapagar()
+                        aluguelRealizado.veiculo.modelo + "\t\t\t" +
+                        aluguelRealizado.quantidadeDias + "\t\t" +
+                        aluguelRealizado.totalapagar() 
                     );
                     scanner.nextLine();
                 }
