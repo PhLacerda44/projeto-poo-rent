@@ -85,6 +85,7 @@ public class RentCar {
                     
                     veiculoList.add(veiculoinput);
 
+                    System.out.println("Pressione Enter para continuar!");
                     scanner.nextLine();
 
                     break;
@@ -184,8 +185,8 @@ public class RentCar {
 
                     for (Aluguel aluguelRealizado : alugueisList) {
                         System.out.println(
-                        aluguelRealizado.cliente.nome + "\t" +
-                        aluguelRealizado.veiculo.modelo + "\t" +
+                        aluguelRealizado.cliente.nome + "\t\t" +
+                        aluguelRealizado.veiculo.modelo + "\t\t" +
                         aluguelRealizado.totalapagar()
                     );
                     scanner.nextLine();
