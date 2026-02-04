@@ -9,7 +9,8 @@ public class ClienteService {
      Scanner scanner = new Scanner(System.in);
 
     public Cliente geraCliente(){
-
+        
+        //Informações do cliente
         System.out.print("Digite o nome do cliente:  ");
         String nomeCliente = scanner.nextLine();
         
@@ -17,6 +18,7 @@ public class ClienteService {
         Integer idadeCliente = scanner.nextInt();
         scanner.nextLine();
 
+        //Se o cliente for menor de 18 não será possível continuar o processo
         if (idadeCliente < 18) {
             System.out.println("-----------------------------------------");
             System.out.println("Não é possível Concluir o cadastro!.");
@@ -26,7 +28,6 @@ public class ClienteService {
             scanner.nextLine();
             return null;
         }
-        
 
         System.out.print("\nDocumento Cliente:  ");
         String documentoCliente = scanner.nextLine();

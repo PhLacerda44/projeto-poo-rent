@@ -7,6 +7,7 @@ import java.util.Scanner;
 import br.com.dighitink.modelo.Aluguel;
 import br.com.dighitink.modelo.Cliente;
 import br.com.dighitink.modelo.Veiculo;
+import br.com.dighitink.service.AluguelService;
 import br.com.dighitink.service.ClienteService;
 import br.com.dighitink.service.VeiculoService;
 import br.com.dighitink.util.Utilitarios;
@@ -23,12 +24,13 @@ public class RentCar {
         ArrayList<Aluguel> alugueisList = new ArrayList<>();
         ClienteService clienteService = new ClienteService();
         VeiculoService veiculoService = new VeiculoService();
+        AluguelService aluguelService = new AluguelService();
 
         while (true) {
             
             Utilitarios.limparTela();
 
-
+            //Menu Rent Car (Cadastro, Aluguel, Saída do sistema)
             System.out.println("##################");
             System.out.println( "    RentCar");
             System.out.println("##################");
@@ -67,13 +69,8 @@ public class RentCar {
                     System.out.println("-----------------------------------------");
                     System.out.println("         Clientes Cadastrados: " + clientesList.size());
                     System.out.println("-----------------------------------------");
-
-                    
-                     
-                    System.out.println("-----------------------------------------");
                     System.out.println("Cliente\t\tidade\t\tDocumento");
                     System.out.println("-----------------------------------------");
-
 
                     for(Cliente cliente:clientesList){
                         System.out.println(
@@ -100,19 +97,13 @@ public class RentCar {
                     break;
 
                 case 4:
-                     Utilitarios.limparTela();
+                    Utilitarios.limparTela();
 
-                     System.out.println("----------------------------------------");
-                     System.out.println("          Veículos Cadastrados: " + veiculoList.size());
-                     System.out.println("----------------------------------------");
-
-                     
-
-                    System.out.println("-----------------------------------------");
+                    System.out.println("----------------------------------------");
+                    System.out.println("          Veículos Cadastrados: " + veiculoList.size());
+                    System.out.println("----------------------------------------");
                     System.out.println("Modelo\t\tMarca\t\tAno");
                     System.out.println("-----------------------------------------");
-
-     
 
                     for(Veiculo veiculo:veiculoList){
                         System.out.println(
@@ -128,51 +119,35 @@ public class RentCar {
                 case 5:
                     Utilitarios.limparTela();
 
-                    System.out.println("##################");
-                    System.out.println("     Locação     ");
-                    System.out.println("##################");
+                    aluguelService.cabecalhoAluguel();
 
-                    System.out.println("-----------------------------------------");
-                    System.out.println("Código \t\t Nome");
-                    System.out.println("-----------------------------------------");
+                    aluguelService.getListaClientes(clientesList);
 
-                    int posicaoCliente = 0;
-                    for(Cliente cliente:clientesList){
-                        System.out.println(posicaoCliente+" \t\t "+cliente.getNome());
-                        posicaoCliente++;
-                    }
-
+                    //Informar código do cliente
                     System.out.print("\nInforme o código do cliente: ");
                     int codigoCliente = scanner.nextInt();
                     scanner.nextLine();
 
-          
                     System.out.print("\nCliente selecionado: ");
                     Cliente clienteSelecionado = clientesList.get(codigoCliente);
                     System.out.println(clienteSelecionado.getNome());
 
+                    
+                    //Limpa a tela para mostrar a Lista de Veículos
                     Utilitarios.limparTela();
 
                    
-                    System.out.println("##################");
-                    System.out.println("     Locação     ");
-                    System.out.println("##################");
-
-                    
-                    System.out.println("------------------------------------------");
-                    System.out.println("Código \t\t Veículo");
-                    System.out.println("------------------------------------------");
-
                     int posicaoVeiculo = 0;
                     for(Veiculo veiculo:veiculoList){
                         System.out.println(posicaoVeiculo+ "\t\t" +veiculo.getModelo());
                         posicaoVeiculo++;
                     }
-
+                    //Informar código do cliente
                     System.out.print("\nInforme o código do veículo: ");
                     int codigoVeiculo = scanner.nextInt();
                     scanner.nextLine();
 
+                    //Quantidade de dias que o cliente irá alugar o veículo
                     System.out.print("\nInforme a quantidade de dias de aluguel: ");
                     int quantidadeDias =  scanner.nextInt();
                     scanner.nextLine();
@@ -181,8 +156,8 @@ public class RentCar {
                     Veiculo veiculoSelecionado = veiculoList.get(codigoVeiculo);
                     System.out.println(veiculoSelecionado.getModelo());
 
+                    //Limpa a tela e 
                     Utilitarios.limparTela();
-
 
                     Aluguel aluguel = new Aluguel();
                     aluguel.setCliente(clienteSelecionado);
@@ -190,10 +165,10 @@ public class RentCar {
                     aluguel.setQuantidadededias(quantidadeDias); 
                     alugueisList.add(aluguel);
 
-                    System.out.println("-----------------------------------------");
+                    System.out.println("###############################");
 
                     aluguel.mostrarDadosAluguel();
-                    System.out.println("Aperte Enter para continuar");
+                    System.out.println("\nAperte Enter para continuar");
                     scanner.nextLine();
                     
                 break;
@@ -201,6 +176,7 @@ public class RentCar {
                 case 6:
                     Utilitarios.limparTela();
 
+                    //Visualização dos Aluguéis, quantidade de dias e e valor
                     System.out.println("------------------------------------------------------------");
                     System.out.println("                       Aluguéis");
                     System.out.println("------------------------------------------------------------");
@@ -219,12 +195,12 @@ public class RentCar {
                 }
                     break;
 
-                case 7:
+                case 7: 
                     Utilitarios.limparTela();
-                    System.out.println("Aperte Enter para sair do Sistema.");
-                    scanner.nextLine();
-                    scanner.close();
-                    break;
+                        System.out.println("Aperte Enter para sair do Sistema.");
+                        scanner.nextLine();
+                        scanner.close();
+                        System.exit(0); // encerra o programa
 
                     
                 default:
@@ -233,8 +209,6 @@ public class RentCar {
                     scanner.nextLine();
                         
             }
-
         }
     }
-
 }

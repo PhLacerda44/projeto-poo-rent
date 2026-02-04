@@ -14,7 +14,6 @@ public class Veiculo {
       this.modelo = modelo;
    }
 
-
    //Encapsulamento Marca
    public String getMarca(){
       return marca;
@@ -22,7 +21,6 @@ public class Veiculo {
    public void setMarca(String marca){
       this.marca = marca;
    }
-
 
    //Encapsulamento Ano
    public Integer getAno(){

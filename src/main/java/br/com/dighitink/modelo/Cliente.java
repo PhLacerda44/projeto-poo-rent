@@ -6,7 +6,6 @@ public class Cliente {
    private Integer idade ;
    private String documento ;
 
-
    //Encapsulamento Nome
    public String getNome() {
         return nome;
@@ -15,7 +14,6 @@ public class Cliente {
       this.nome = nome;
    }
 
-   
    //Encapsuamento Idade
    public Integer getIdade(){
       return idade;
@@ -24,7 +22,6 @@ public class Cliente {
       this.idade = idade;
    }
 
-   
    //Encapsumaneto Documento
    public String getDocumento(){
       return documento;
