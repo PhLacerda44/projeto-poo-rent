@@ -2,10 +2,39 @@ package br.com.dighitink.modelo;
 
 public class Aluguel {
    
-    public Veiculo  veiculo;
-    public Cliente  cliente;
-    public Integer  quantidadeDias;
+    private Veiculo  veiculo;
+    private Cliente  cliente;
+    private Integer  quantidadeDias;
 
+    //////////////////////////////////////////////////////////
+    
+    //Encapsulamento Veículo
+    public Veiculo getVeiculo(){
+        return veiculo;
+    }
+    public void setVeiculo(Veiculo veiculo){
+        this.veiculo = veiculo;
+    }
+
+
+    //Encapsulamento Cliente
+    public Cliente getCliente(){
+        return cliente;
+    }
+    public void setCliente(Cliente cliente){
+        this.cliente = cliente;
+    }
+
+    
+    //Encapsuamento Quantidade de dias
+    public Integer getQuantidadededias(){
+        return quantidadeDias;
+    }
+    public void setQuantidadededias(Integer quantidadeDias){
+        this.quantidadeDias = quantidadeDias;
+    }
+
+    //////////////////////////////////////////////////////////////
 
     public void mostrarDadosAluguel(){
 
@@ -13,8 +42,8 @@ public class Aluguel {
         Double totalAluguel = valorDiaria*quantidadeDias;
 
         System.out.println("Dados do aluguel:");
-        System.out.println("Cliente:" + cliente.nome);
-        System.out.println("Veículo Alugado:" + veiculo.modelo + "-"+veiculo.ano);
+        System.out.println("Cliente:" + cliente.getNome());
+        System.out.println("Veículo Alugado:" + veiculo.getModelo() + "-"+veiculo.getAno());
         System.out.println("Quantidade de dias:"+ quantidadeDias);
         System.out.println("Total do aluguel: "+totalAluguel);
     }

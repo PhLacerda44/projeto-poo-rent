@@ -10,10 +10,10 @@ public class ClienteService {
 
     public Cliente geraCliente(){
 
-        System.out.println("Digite o nome do cliente:");
+        System.out.print("Digite o nome do cliente:  ");
         String nomeCliente = scanner.nextLine();
         
-        System.out.println("Digite a idade do Cliente:");
+        System.out.print("\nDigite a idade do Cliente:  ");
         Integer idadeCliente = scanner.nextInt();
         scanner.nextLine();
 
@@ -28,13 +28,13 @@ public class ClienteService {
         }
         
 
-        System.out.println("Documento Cliente:");
+        System.out.print("\nDocumento Cliente:  ");
         String documentoCliente = scanner.nextLine();
         
         Cliente clienteInput = new Cliente();
-        clienteInput.nome = nomeCliente;
-        clienteInput.idade = idadeCliente;
-        clienteInput.documento = documentoCliente;
+        clienteInput.setNome(nomeCliente); 
+        clienteInput.setIdade(idadeCliente); 
+        clienteInput.setDocumento(documentoCliente);
         
         return clienteInput;
 
