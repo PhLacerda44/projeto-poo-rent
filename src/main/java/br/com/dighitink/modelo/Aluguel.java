@@ -41,7 +41,8 @@ public class Aluguel {
         Double valorDiaria = 150.00;
         Double totalAluguel = valorDiaria*quantidadeDias;
 
-        System.out.println("Dados do aluguel: ");
+        System.out.println("###########################");
+        System.out.println("    Dados do aluguel: ");
         System.out.println("###########################");
         System.out.println("\nCliente: " + cliente.getNome());
         System.out.println("\nVeículo Alugado: " + veiculo.getModelo() + "-"+veiculo.getAno());

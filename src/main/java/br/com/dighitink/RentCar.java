@@ -119,57 +119,44 @@ public class RentCar {
                 case 5:
                     Utilitarios.limparTela();
 
-                    aluguelService.cabecalhoAluguel();
+                    aluguelService.cabecalhoAluguelCliente();
 
-                    aluguelService.getListaClientes(clientesList);
+                    aluguelService.getListaClientes(scanner,clientesList);
 
-                    //Informar código do cliente
-                    System.out.print("\nInforme o código do cliente: ");
-                    int codigoCliente = scanner.nextInt();
-                    scanner.nextLine();
+                    Cliente clienteSelecionado =  aluguelService.selecionaCliente(scanner,clientesList);
 
-                    System.out.print("\nCliente selecionado: ");
-                    Cliente clienteSelecionado = clientesList.get(codigoCliente);
-                    System.out.println(clienteSelecionado.getNome());
-
-                    
-                    //Limpa a tela para mostrar a Lista de Veículos
                     Utilitarios.limparTela();
 
-                   
-                    int posicaoVeiculo = 0;
-                    for(Veiculo veiculo:veiculoList){
-                        System.out.println(posicaoVeiculo+ "\t\t" +veiculo.getModelo());
-                        posicaoVeiculo++;
-                    }
-                    //Informar código do cliente
-                    System.out.print("\nInforme o código do veículo: ");
-                    int codigoVeiculo = scanner.nextInt();
-                    scanner.nextLine();
+                    aluguelService.cabecalhoAluguelveiculo();
+
+                    aluguelService.getListaVeiculos(veiculoList);
+
+                    Veiculo veiculoSelecionado = aluguelService.selecionaVeiculo(scanner, veiculoList);
+
+                    Utilitarios.limparTela();
+
+                    //aluguelService.selecionaVeiculo(scanner, veiculoList);
 
                     //Quantidade de dias que o cliente irá alugar o veículo
                     System.out.print("\nInforme a quantidade de dias de aluguel: ");
                     int quantidadeDias =  scanner.nextInt();
                     scanner.nextLine();
 
-                    System.err.println("Veículo selecionado");
-                    Veiculo veiculoSelecionado = veiculoList.get(codigoVeiculo);
-                    System.out.println(veiculoSelecionado.getModelo());
-
-                    //Limpa a tela e 
                     Utilitarios.limparTela();
 
-                    Aluguel aluguel = new Aluguel();
+                    Aluguel aluguel = new Aluguel( );
                     aluguel.setCliente(clienteSelecionado);
                     aluguel.setVeiculo(veiculoSelecionado);
                     aluguel.setQuantidadededias(quantidadeDias); 
                     alugueisList.add(aluguel);
-
-                    System.out.println("###############################");
-
+                                        
                     aluguel.mostrarDadosAluguel();
                     System.out.println("\nAperte Enter para continuar");
                     scanner.nextLine();
+
+    
+
+
                     
                 break;
 

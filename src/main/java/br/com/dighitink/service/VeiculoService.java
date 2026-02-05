@@ -25,11 +25,11 @@ public class VeiculoService {
          if (anoVeiculo < 2015) {
               System.out.println("-----------------------------------------");
               System.out.println("Não é possível Concluir o cadastro!.");
+              System.out.println("Veículos abaixo de 2015 não será possível Cadastrar");
               System.out.println("-----------------------------------------");
               scanner.nextLine();
         return null; 
      }
-
         scanner.nextLine();
                     
         Veiculo veiculoinput = new Veiculo();
