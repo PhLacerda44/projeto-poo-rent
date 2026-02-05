@@ -36,26 +36,26 @@ public class Aluguel {
 
     //////////////////////////////////////////////////////////////
 
-    public void mostrarDadosAluguel(){
+   public void mostrarDadosAluguel() {
 
-        Double valorDiaria = 150.00;
-        Double totalAluguel = valorDiaria*quantidadeDias;
+        Double valorDiaria = veiculo.getValorDiaria();
+        Double totalAluguel = valorDiaria * quantidadeDias;
 
-        System.out.println("###########################");
-        System.out.println("    Dados do aluguel: ");
-        System.out.println("###########################");
+        System.out.println("############################");
+        System.out.println("        Dados do aluguel    ");
+        System.out.println("############################");
         System.out.println("\nCliente: " + cliente.getNome());
-        System.out.println("\nVeículo Alugado: " + veiculo.getModelo() + "-"+veiculo.getAno());
-        System.out.println("\nQuantidade de dias: "+ quantidadeDias);
-        System.out.println("\nTotal do aluguel: "+totalAluguel);
+        System.out.println("\nVeículo Alugado: " + veiculo.getModelo());
+        System.out.println("\nValor da diária: " + valorDiaria);
+        System.out.println("\nQuantidade de dias: " + quantidadeDias);
+        System.out.println("\nTotal do aluguel: " + totalAluguel);
     }
 
-    public Double totalapagar(){
-        Double valordodia = 150.00;
-        Double total = valordodia*quantidadeDias;
-        return total;
-    
+    public Double totalapagar() {
+        return veiculo.getValorDiaria() * quantidadeDias;
     }
-
-    
 }
+    
+    
+
+    

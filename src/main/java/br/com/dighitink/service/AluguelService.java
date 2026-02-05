@@ -13,7 +13,7 @@ public class AluguelService {
      // private Cliente clienteSelecionado;
      // private ArrayList<Aluguel> alugueisList = new ArrayList<>();
 
-     public void cabecalhoAluguelCliente() {     
+      public void cabecalhoAluguelCliente() {     
 
           System.out.println("####################");
           System.out.println("   Locação Cliente      ");
@@ -25,7 +25,7 @@ public class AluguelService {
 
      }
 
-     public void getListaClientes(Scanner scanner ,ArrayList<Cliente> clientesList) {
+      public void getListaClientes(Scanner scanner ,ArrayList<Cliente> clientesList) {
          int posicaoCliente = 0;
          for(Cliente cliente:clientesList){
             System.out.println(posicaoCliente+" \t\t "+cliente.getNome());
@@ -33,7 +33,7 @@ public class AluguelService {
          }
      }
 
-     public Cliente selecionaCliente(Scanner scanner, ArrayList<Cliente> clientesList ) {    
+      public Cliente selecionaCliente(Scanner scanner, ArrayList<Cliente> clientesList ) {    
      
           System.out.print("\nInforme o código do cliente: ");
           int codigoCliente = scanner.nextInt();
@@ -45,7 +45,7 @@ public class AluguelService {
            return clienteSelecionado;
        }
 
-        public void cabecalhoAluguelveiculo() {     
+      public void cabecalhoAluguelveiculo() {     
 
           System.out.println("####################");
           System.out.println("   Locação Veículo      ");
@@ -65,7 +65,7 @@ public class AluguelService {
                }
        }
 
-       public Veiculo selecionaVeiculo(Scanner scanner, ArrayList<Veiculo> veiculoList){
+      public Veiculo selecionaVeiculo(Scanner scanner, ArrayList<Veiculo> veiculoList){
           
           System.out.print("\nInforme o código do veículo: ");
           int codigoVeiculo = scanner.nextInt();
@@ -77,11 +77,6 @@ public class AluguelService {
            return veiculoSelecionado;
        }
 
-
        
-
-
-      
-
-    
+     
 }

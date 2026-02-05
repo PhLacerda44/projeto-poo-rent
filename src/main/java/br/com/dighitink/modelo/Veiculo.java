@@ -5,6 +5,7 @@ public class Veiculo {
    private String modelo;
    private String marca;
    private Integer ano;
+   private Double valorDiaria;
 
    //Encapsulamento Modelo
    public String getModelo(){
@@ -30,4 +31,11 @@ public class Veiculo {
       this.ano = ano;
    }
 
+   public Double getValorDiaria(){
+      return valorDiaria;
+   }
+
+   public void setValorDiaria(Double valorDiaria){
+      this.valorDiaria = valorDiaria;
+   }
 }

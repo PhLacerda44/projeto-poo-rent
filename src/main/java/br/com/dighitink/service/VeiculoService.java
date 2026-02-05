@@ -20,6 +20,10 @@ public class VeiculoService {
          System.out.print("\nDigite o ano do Veículo:  ");
          Integer anoVeiculo = scanner.nextInt();
 
+         System.out.println("\nDigite o valor da Diária: ");
+         Double valor = scanner.nextDouble();
+         
+
 
          // Caso o veículo seja de um ano abaixo de 2015, o processo não irá continuar
          if (anoVeiculo < 2015) {
@@ -36,6 +40,7 @@ public class VeiculoService {
         veiculoinput.setModelo(modeloVeiculo); 
         veiculoinput.setMarca(marcaVeiculo); 
         veiculoinput.setAno(anoVeiculo); 
+        veiculoinput.setValorDiaria(valor);
 
         return veiculoinput;
         

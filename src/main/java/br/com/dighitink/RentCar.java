@@ -135,8 +135,6 @@ public class RentCar {
 
                     Utilitarios.limparTela();
 
-                    //aluguelService.selecionaVeiculo(scanner, veiculoList);
-
                     //Quantidade de dias que o cliente irá alugar o veículo
                     System.out.print("\nInforme a quantidade de dias de aluguel: ");
                     int quantidadeDias =  scanner.nextInt();
@@ -153,11 +151,7 @@ public class RentCar {
                     aluguel.mostrarDadosAluguel();
                     System.out.println("\nAperte Enter para continuar");
                     scanner.nextLine();
-
-    
-
-
-                    
+                                        
                 break;
 
                 case 6:
