@@ -149,7 +149,7 @@ public class RentCar {
                     alugueisList.add(aluguel);
                                         
                     aluguel.mostrarDadosAluguel();
-                    System.out.println("\nAperte Enter para continuar");
+                    System.out.println("\nPressione Enter para continuar:");
                     scanner.nextLine();
                                         
                 break;
