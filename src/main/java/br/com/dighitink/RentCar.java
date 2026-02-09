@@ -170,7 +170,7 @@ public class RentCar {
                         System.out.println(
                         aluguelRealizado.getCliente().getNome() + "\t\t" +
                         aluguelRealizado.getVeiculo().getModelo() + "\t\t\t" +
-                        aluguelRealizado.getQuantidadededias() + "\t\t" +
+                        aluguelRealizado.getQuantidadeDias() + "\t\t" +
                         aluguelRealizado.totalapagar() 
                     );
                     scanner.nextLine();

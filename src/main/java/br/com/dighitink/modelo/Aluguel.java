@@ -1,40 +1,20 @@
 package br.com.dighitink.modelo;
 
+import lombok.Getter;
+
+import lombok.Setter;
+
+
 public class Aluguel {
    
+    @Getter @Setter
     private Veiculo  veiculo;
+
+    @Getter @Setter
     private Cliente  cliente;
+
+    @Getter @Setter
     private Integer  quantidadeDias;
-
-    //////////////////////////////////////////////////////////
-    
-    //Encapsulamento Veículo
-    public Veiculo getVeiculo(){
-        return veiculo;
-    }
-    public void setVeiculo(Veiculo veiculo){
-        this.veiculo = veiculo;
-    }
-
-
-    //Encapsulamento Cliente
-    public Cliente getCliente(){
-        return cliente;
-    }
-    public void setCliente(Cliente cliente){
-        this.cliente = cliente;
-    }
-
-    
-    //Encapsuamento Quantidade de dias
-    public Integer getQuantidadededias(){
-        return quantidadeDias;
-    }
-    public void setQuantidadededias(Integer quantidadeDias){
-        this.quantidadeDias = quantidadeDias;
-    }
-
-    //////////////////////////////////////////////////////////////
 
     //* Código que mostra meu aluguel, cliente, veículo, quantidade de dias e valor da diária  */
    public void mostrarDadosAluguel() {
@@ -59,6 +39,14 @@ public class Aluguel {
     public Double totalapagar() {
         return veiculo.getValorDiaria() * quantidadeDias;
     }
+
+  
+
+
+    
+
+    
+
 }
     
     
