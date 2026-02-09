@@ -52,6 +52,10 @@ public class Aluguel {
         System.out.println("\nTotal do aluguel: " + totalAluguel);
     }
 
+    /**
+     * 
+     * @return
+     */
     public Double totalapagar() {
         return veiculo.getValorDiaria() * quantidadeDias;
     }

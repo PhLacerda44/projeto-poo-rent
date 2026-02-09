@@ -15,7 +15,7 @@ import br.com.dighitink.util.Utilitarios;
 public class RentCar {
 
 
-
+/** Todo meu código MAIN, contendo métodos para melhor organização */
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Scanner scanner = new Scanner(System.in);
@@ -63,7 +63,7 @@ public class RentCar {
 
                     break;
 
-                    
+
                 case 2:
                     Utilitarios.limparTela();
                     
@@ -120,19 +120,19 @@ public class RentCar {
                 case 5:
                     Utilitarios.limparTela();
 
-                    aluguelService.cabecalhoAluguelCliente();
+                    aluguelService.imprimeCabecalhoAluguelCliente();
 
                     aluguelService.getListaClientes(scanner,clientesList);
 
-                    Cliente clienteSelecionado =  aluguelService.selecionaCliente(scanner,clientesList);
+                    Cliente clienteSelecionado =  aluguelService.selecionaClienteDaLista(scanner,clientesList);
 
                     Utilitarios.limparTela();
 
-                    aluguelService.cabecalhoAluguelveiculo();
+                    aluguelService.imprimeCabecalhoAluguelveiculo();
 
-                    aluguelService.getListaVeiculos(veiculoList);
+                    aluguelService.imprimeListaVeiculos(veiculoList);
 
-                    Veiculo veiculoSelecionado = aluguelService.selecionaVeiculo(scanner, veiculoList);
+                    Veiculo veiculoSelecionado = aluguelService.selecionaVeiculoDaLista(scanner, veiculoList);
 
                     Utilitarios.limparTela();
 
@@ -186,8 +186,7 @@ public class RentCar {
 
                     
                 default:
-                    
-                    System.out.println("Pressione enter para continuar");
+                    System.out.println("Opção inválida, pressione enter para retornar...");
                     scanner.nextLine();
                         
             }

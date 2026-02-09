@@ -6,13 +6,13 @@ import java.util.Scanner;
 //import br.com.dighitink.modelo.Aluguel;
 import br.com.dighitink.modelo.Cliente;
 import br.com.dighitink.modelo.Veiculo;
+import br.com.dighitink.util.Utilitarios;
 
 
 public class AluguelService {
-
         
     /** Método que contêm o código sobre o cabeçalho, "Locação Cliente"  */ 
-      public void cabecalhoAluguelCliente() {     
+      public void imprimeCabecalhoAluguelCliente() {     
 
 
           System.out.println("####################");
@@ -35,10 +35,9 @@ public class AluguelService {
      }
         
     /** Método que Seleciona por meio de um código um cliente da minha lista */
-      public Cliente selecionaCliente(Scanner scanner, ArrayList<Cliente> clientesList ) {    
+      public Cliente selecionaClienteDaLista(Scanner scanner, ArrayList<Cliente> clientesList ) {    
      
-          System.out.print("\nInforme o código do cliente: ");
-          int codigoCliente = scanner.nextInt();
+          int codigoCliente = Utilitarios.validaNumeroInteiro(scanner, "Informe o código do cliente: ");
           scanner.nextLine();
 
            System.out.print("\nCliente selecionado: ");
@@ -48,7 +47,7 @@ public class AluguelService {
        }
     
     /** Método que contêm o código sobre o cabeçalho, "Locação Veículo" */
-      public void cabecalhoAluguelveiculo() {     
+      public void imprimeCabecalhoAluguelveiculo() {     
 
           System.out.println("####################");
           System.out.println("   Locação Veículo      ");
@@ -60,8 +59,8 @@ public class AluguelService {
 
      }
     
-    //** Método com o código de cadastro da minha lista de veículos */
-      public void getListaVeiculos(ArrayList<Veiculo> veiculoList ){
+    /** Método com o código de cadastro da minha lista de veículos */
+      public void imprimeListaVeiculos(ArrayList<Veiculo> veiculoList ){
              int posicaoVeiculo = 0;
              for(Veiculo veiculo:veiculoList){
              System.out.println(posicaoVeiculo+ "\t\t" +veiculo.getModelo());
@@ -69,8 +68,8 @@ public class AluguelService {
                }
        }
     
-    //**Método que Seleciona por meio de um código um veículo da minha lista */
-      public Veiculo selecionaVeiculo(Scanner scanner, ArrayList<Veiculo> veiculoList){
+    /**Método que Seleciona por meio de um código um veículo da minha lista */
+      public Veiculo selecionaVeiculoDaLista(Scanner scanner, ArrayList<Veiculo> veiculoList){
           
           System.out.print("\nInforme o código do veículo: ");
           int codigoVeiculo = scanner.nextInt();
@@ -82,6 +81,4 @@ public class AluguelService {
            return veiculoSelecionado;
        }
 
-       
-     
 }

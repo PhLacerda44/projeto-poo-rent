@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class Utilitarios {
 
-    //Uso para limpar a tela do console ( cmd,cls)
+    /**Uso para limpar a tela do console ( cmd,cls)*/
     public static void limparTela() throws InterruptedException, IOException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 
-    //** Método que faz o tratamento de erro do meu número inteiro */
+    /** Método que faz o tratamento de erro do meu número inteiro */
     public static Integer validaNumeroInteiro(Scanner scanner, String texto){
 
         boolean valorValido = false;
@@ -34,7 +34,7 @@ public class Utilitarios {
 
     }
 
-    //** Método que faz o tratamento de erro do meu número Decimal */
+    /** Método que faz o tratamento de erro do meu número Decimal */
       public static Double validaNumeroDecimal(Scanner scanner, String texto){
         
         boolean valorValido = false;
