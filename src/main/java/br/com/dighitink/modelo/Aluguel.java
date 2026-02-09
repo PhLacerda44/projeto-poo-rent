@@ -36,6 +36,7 @@ public class Aluguel {
 
     //////////////////////////////////////////////////////////////
 
+    //* Código que mostra meu aluguel, cliente, veículo, quantidade de dias e valor da diária  */
    public void mostrarDadosAluguel() {
 
         Double valorDiaria = veiculo.getValorDiaria();

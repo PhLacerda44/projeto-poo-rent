@@ -9,6 +9,7 @@ public class ClienteService {
 
     Scanner scanner = new Scanner(System.in);
 
+    //** Método que gera meu cliente, verifica se é maior de 18 anos, e faz a verificção de erro */
     public Cliente geraCliente() {
 
         System.out.print("Digite o nome do cliente: ");

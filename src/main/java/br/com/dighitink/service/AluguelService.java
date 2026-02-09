@@ -10,10 +10,10 @@ import br.com.dighitink.modelo.Veiculo;
 
 public class AluguelService {
 
-     // private Cliente clienteSelecionado;
-     // private ArrayList<Aluguel> alugueisList = new ArrayList<>();
-
+        
+    /** Método que contêm o código sobre o cabeçalho, "Locação Cliente"  */ 
       public void cabecalhoAluguelCliente() {     
+
 
           System.out.println("####################");
           System.out.println("   Locação Cliente      ");
@@ -25,6 +25,7 @@ public class AluguelService {
 
      }
 
+    /** Método com o código de cadastro da minha lista de clientes */
       public void getListaClientes(Scanner scanner ,ArrayList<Cliente> clientesList) {
          int posicaoCliente = 0;
          for(Cliente cliente:clientesList){
@@ -32,7 +33,8 @@ public class AluguelService {
             posicaoCliente++;
          }
      }
-
+        
+    /** Método que Seleciona por meio de um código um cliente da minha lista */
       public Cliente selecionaCliente(Scanner scanner, ArrayList<Cliente> clientesList ) {    
      
           System.out.print("\nInforme o código do cliente: ");
@@ -44,7 +46,8 @@ public class AluguelService {
            System.out.println(clienteSelecionado.getNome());
            return clienteSelecionado;
        }
-
+    
+    /** Método que contêm o código sobre o cabeçalho, "Locação Veículo" */
       public void cabecalhoAluguelveiculo() {     
 
           System.out.println("####################");
@@ -56,7 +59,8 @@ public class AluguelService {
           System.out.println("--------------------------------");
 
      }
-
+    
+    //** Método com o código de cadastro da minha lista de veículos */
       public void getListaVeiculos(ArrayList<Veiculo> veiculoList ){
              int posicaoVeiculo = 0;
              for(Veiculo veiculo:veiculoList){
@@ -64,7 +68,8 @@ public class AluguelService {
              posicaoVeiculo++;
                }
        }
-
+    
+    //**Método que Seleciona por meio de um código um veículo da minha lista */
       public Veiculo selecionaVeiculo(Scanner scanner, ArrayList<Veiculo> veiculoList){
           
           System.out.print("\nInforme o código do veículo: ");

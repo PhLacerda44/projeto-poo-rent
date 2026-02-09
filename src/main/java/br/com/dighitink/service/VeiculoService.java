@@ -9,6 +9,7 @@ public class VeiculoService {
 
     Scanner scanner = new Scanner(System.in);
 
+   //* Método que gera meu veículo, e faz a verificação de erro */
     public Veiculo geraVeiculo() {
 
       System.out.print("Digite o nome do Veículo: ");
@@ -19,7 +20,7 @@ public class VeiculoService {
 
       Integer anoVeiculo = Utilitarios.validaNumeroInteiro(scanner, "Informe o ano do veículo: ");
       
-      Double valor = Utilitarios.validaNumeroDecimal(scanner, "Digite o valor da Diária");
+      Double valor = Utilitarios.validaNumeroDecimal(scanner, "Digite o valor da Diária: ");
       
       Veiculo veiculoinput = new Veiculo();
       veiculoinput.setModelo(modeloVeiculo);
