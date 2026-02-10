@@ -146,7 +146,7 @@ public class RentCar {
                     Aluguel aluguel = new Aluguel( );
                     aluguel.setCliente(clienteSelecionado);
                     aluguel.setVeiculo(veiculoSelecionado);
-                    aluguel.setQuantidadededias(quantidadeDias); 
+                    aluguel.setQuantidadeDias(quantidadeDias); 
                     alugueisList.add(aluguel);
                                         
                     aluguel.mostrarDadosAluguel();
