@@ -1,53 +1,64 @@
 package br.com.dighitink.modelo;
 
 import lombok.Getter;
-
 import lombok.Setter;
 
+    public class Aluguel {
 
-public class Aluguel {
-   
-    @Getter @Setter
-    private Veiculo  veiculo;
+        @Getter @Setter
+        private Integer id;
 
-    @Getter @Setter
-    private Cliente  cliente;
+        @Getter @Setter
+        private Veiculo veiculo;
 
-    @Getter @Setter
-    private Integer  quantidadeDias;
+        @Getter @Setter
+        private Cliente cliente;
 
-    //* Código que mostra meu aluguel, cliente, veículo, quantidade de dias e valor da diária  */
-   public void mostrarDadosAluguel() {
+        @Getter @Setter
+        private Integer quantidadeDias;
 
-        Double valorDiaria = veiculo.getValorDiaria();
-        Double totalAluguel = valorDiaria * quantidadeDias;
+      
+        public Double getTotalAluguel() {
+            if (veiculo == null || quantidadeDias == null) {
+                return 0.0;
+            }
+            return veiculo.getValorDiaria() * quantidadeDias;
+        }
 
-        System.out.println("############################");
-        System.out.println("        Dados do aluguel    ");
-        System.out.println("############################");
-        System.out.println("\nCliente: " + cliente.getNome());
-        System.out.println("\nVeículo Alugado: " + veiculo.getModelo());
-        System.out.println("\nValor da diária: " + valorDiaria);
-        System.out.println("\nQuantidade de dias: " + quantidadeDias);
-        System.out.println("\nTotal do aluguel: " + totalAluguel);
-    }
+        // Método para mostrar os dados do aluguel
+        public void mostrarDadosAluguel() {
 
-    /**
-     * 
-     * @return
-     */
-    public Double totalapagar() {
-        return veiculo.getValorDiaria() * quantidadeDias;
-    }
+            Double valorDiaria = veiculo.getValorDiaria();
+            Double totalAluguel = getTotalAluguel();
 
-  
+            System.out.println("############################");
+            System.out.println("        Dados do aluguel    ");
+            System.out.println("############################");
+            System.out.println("\nCliente: " + cliente.getNome());
+            System.out.println("\nVeículo Alugado: " + veiculo.getModelo());
+            System.out.println("\nValor da diária: " + valorDiaria);
+            System.out.println("\nQuantidade de dias: " + quantidadeDias);
+            System.out.println("\nTotal do aluguel: " + totalAluguel);
+        }
 
+        /**
+         * 
+         * @return
+         */
+        public Double totalapagar() {
+            return veiculo.getValorDiaria() * quantidadeDias;
+        }
 
-    
-
-    
-
+        public void setTotalAluguel(double double1) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'setTotalAluguel'");
+        }
 }
+
+    
+
+
+
     
     
 

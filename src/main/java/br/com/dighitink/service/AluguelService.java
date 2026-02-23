@@ -3,6 +3,9 @@ package br.com.dighitink.service;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import br.com.dighitink.dao.AluguelDAO;
+import br.com.dighitink.dao.ClienteDAO;
+import br.com.dighitink.modelo.Aluguel;
 //import br.com.dighitink.modelo.Aluguel;
 import br.com.dighitink.modelo.Cliente;
 import br.com.dighitink.modelo.Veiculo;
@@ -80,5 +83,7 @@ public class AluguelService {
            System.out.println(veiculoSelecionado.getModelo());
            return veiculoSelecionado;
        }
+
+     
 
 }

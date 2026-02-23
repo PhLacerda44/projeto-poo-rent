@@ -6,6 +6,9 @@ import lombok.Setter;
 public class Veiculo {
 
     @Getter @Setter
+    private Integer id;
+
+    @Getter @Setter
    private String modelo;
 
     @Getter @Setter
@@ -17,6 +20,8 @@ public class Veiculo {
     @Getter @Setter
    private Double valorDiaria;
 
+
+ 
 
 
 }

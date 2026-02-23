@@ -1,7 +1,9 @@
 package br.com.dighitink;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import br.com.dighitink.modelo.Aluguel;
@@ -15,13 +17,15 @@ import br.com.dighitink.util.Utilitarios;
 public class RentCar {
 
 
-/** Todo meu código MAIN, contendo métodos para melhor organização */
-    public static void main(String[] args) throws IOException, InterruptedException {
+/** Todo meu código MAIN, contendo métodos para melhor organização 
+ * @throws SQLException */
+    public static void main(String[] args) throws IOException, InterruptedException, SQLException {
 
         Scanner scanner = new Scanner(System.in);
         ArrayList<Cliente> clientesList = new ArrayList<>();
         ArrayList<Veiculo> veiculoList = new ArrayList<>();
         ArrayList<Aluguel> alugueisList = new ArrayList<>();
+
         ClienteService clienteService = new ClienteService();
         VeiculoService veiculoService = new VeiculoService();
         AluguelService aluguelService = new AluguelService();
@@ -52,10 +56,8 @@ public class RentCar {
                 case 1:
                     Utilitarios.limparTela();
                     
-                    Cliente clienteInput = clienteService.geraCliente();
+                    Cliente clienteInput = clienteService.gerarESalvarCliente();
                     if(clienteInput==null) break;
-
-                    clientesList.add(clienteInput);
 
                     System.out.println("\nCadastro realizado com sucesso!");
                     System.out.println("Pressione enter para continuar...");
@@ -66,14 +68,15 @@ public class RentCar {
 
                 case 2:
                     Utilitarios.limparTela();
+                    List<Cliente> clientes = clienteService.listarClientes();
                     
                     System.out.println("-----------------------------------------");
-                    System.out.println("         Clientes Cadastrados: " + clientesList.size());
+                    System.out.println("         Clientes Cadastrados: " + clientes.size());
                     System.out.println("-----------------------------------------");
                     System.out.println("Cliente\t\tidade\t\tDocumento");
                     System.out.println("-----------------------------------------");
 
-                    for(Cliente cliente:clientesList){
+                    for(Cliente cliente:clientes){
                         System.out.println(
                          cliente.getNome() + "\t\t" +
                          cliente.getIdade() + "\t\t" +
@@ -88,25 +91,26 @@ public class RentCar {
                 case 3:
                     Utilitarios.limparTela();
 
-                    Veiculo veiculoinput = veiculoService.geraVeiculo();
-                    
-                    veiculoList.add(veiculoinput);
+                    Veiculo veiculoinput = veiculoService.gerarESalvarVeiculo();
+                    if (veiculoinput==null) break;
 
-                    System.out.println("Pressione Enter para continuar!");
+                    System.out.println("\nCadastro realizado com sucesso!");
+                    System.out.println("Pressione enter para continuar...");
                     scanner.nextLine();
 
                     break;
 
                 case 4:
                     Utilitarios.limparTela();
+                    List<Veiculo> veiculos = veiculoService.listarVeiculos();
 
                     System.out.println("----------------------------------------");
-                    System.out.println("          Veículos Cadastrados: " + veiculoList.size());
+                    System.out.println("          Veículos Cadastrados: " + veiculos.size());
                     System.out.println("----------------------------------------");
                     System.out.println("Modelo\t\tMarca\t\tAno");
                     System.out.println("-----------------------------------------");
 
-                    for(Veiculo veiculo:veiculoList){
+                    for(Veiculo veiculo:veiculos){
                         System.out.println(
                         veiculo.getModelo() + "\t\t" +
                         veiculo.getMarca() + "\t\t" +
