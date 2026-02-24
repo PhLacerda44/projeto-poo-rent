@@ -59,6 +59,8 @@ public class AluguelDAO {
 
             aluguel.setQuantidadeDias(rst.getInt("quantida_dias"));
 
+            aluguel.setTotalAluguel(rst.getDouble("total_aluguel"));
+
             listaAlugueis.add(aluguel);
         }
         rst.close();

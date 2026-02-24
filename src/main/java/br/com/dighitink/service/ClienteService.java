@@ -56,7 +56,27 @@ public class ClienteService {
         return clienteDAO.buscarPorId(id);
     }
 
+ /** Método com o código de cadastro da minha lista de clientes 
+     * @throws SQLException */
+    public void getListaClientes(Scanner scanner) throws SQLException {
 
+        ClienteService clienteService = new ClienteService();
+        List<Cliente> clientesList = clienteService.listarClientes();
+         
+         for(Cliente cliente:clientesList){
+            System.out.println(cliente.getId()+" \t\t "+cliente.getNome());            
+         }
+     }
+    /** Método que Seleciona por meio de um código um cliente da minha lista */
+    public Cliente selecionaClienteDaLista(Scanner scanner) throws SQLException {    
+        
+         ClienteService clienteService = new ClienteService();
 
+        int codigoCliente = Utilitarios.validaNumeroInteiro(scanner, "Informe o código do cliente: ");
 
+        System.out.print("\nCliente selecionado: ");
+        Cliente clienteSelecionado = clienteService.buscarPorId(codigoCliente);
+        System.out.println(clienteSelecionado.getNome());
+           return clienteSelecionado;
+       }
 }

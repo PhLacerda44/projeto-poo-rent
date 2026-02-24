@@ -13,7 +13,6 @@ public class VeiculoService {
     Scanner scanner = new Scanner(System.in);
 
    //* Método que gera meu veículo, e faz a verificação de erro */
-   
     public Veiculo gerarESalvarVeiculo() throws SQLException {
 
       System.out.print("Digite o nome do Veículo: ");
@@ -48,4 +47,29 @@ public class VeiculoService {
       VeiculoDAO veiculoDAO = new VeiculoDAO();
       return veiculoDAO.buscarPorId(id);
    }
+   /** Método com o código de cadastro da minha lista de veículos */
+   public void imprimeListaVeiculos(Scanner scanner ) throws SQLException{
+
+      VeiculoService veiculoService = new VeiculoService();
+      List<Veiculo> veiculoList = veiculoService.listarVeiculos();
+      
+         for(Veiculo veiculo:veiculoList){
+         System.out.println(veiculo.getId()+ "\t\t" +veiculo.getModelo());
+      
+         }
+   }
+      /**Método que Seleciona por meio de um código um veículo da minha lista */
+   public Veiculo buscarVeiculo(Scanner scanner) throws SQLException{
+         
+      VeiculoService veiculoService =  new VeiculoService();
+
+      System.out.print("\nInforme o código do veículo: ");
+      int codigoVeiculo = scanner.nextInt();
+      scanner.nextLine();
+      
+      System.out.print("\nVeículo selecionado: ");
+      Veiculo veiculoSelecionado = veiculoService.buscarPorId(codigoVeiculo);
+      System.out.println(veiculoSelecionado.getModelo());
+      return veiculoSelecionado;
+      }
 }

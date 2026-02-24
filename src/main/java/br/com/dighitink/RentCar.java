@@ -2,7 +2,6 @@ package br.com.dighitink;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,11 +23,11 @@ public class RentCar {
         Scanner scanner = new Scanner(System.in);
         //ArrayList<Cliente> clientesList = new ArrayList<>();
         //ArrayList<Veiculo> veiculoList = new ArrayList<>();
-        ArrayList<Aluguel> alugueisList = new ArrayList<>();
+        //ArrayList<Aluguel> alugueisList = new ArrayList<>();
 
         ClienteService clienteService = new ClienteService();
         VeiculoService veiculoService = new VeiculoService();
-        AluguelService aluguelService = new AluguelService(clienteService);
+        AluguelService aluguelService = new AluguelService();
 
         while (true) {
             
@@ -126,17 +125,17 @@ public class RentCar {
 
                     aluguelService.imprimeCabecalhoAluguelCliente();
 
-                    aluguelService.getListaClientes(scanner);
+                    clienteService.getListaClientes(scanner);
 
-                    Cliente clienteSelecionado =  aluguelService.selecionaClienteDaLista(scanner);
+                    Cliente clienteSelecionado =  clienteService.selecionaClienteDaLista(scanner);
 
                     Utilitarios.limparTela();
 
                     aluguelService.imprimeCabecalhoAluguelveiculo();
 
-                    aluguelService.imprimeListaVeiculos(scanner);
+                    veiculoService.imprimeListaVeiculos(scanner);
 
-                    Veiculo veiculoSelecionado = aluguelService.selecionaVeiculoDaLista(scanner);
+                    Veiculo veiculoSelecionado = veiculoService.buscarVeiculo(scanner);
 
                     Utilitarios.limparTela();
 
@@ -151,12 +150,16 @@ public class RentCar {
                     aluguel.setCliente(clienteSelecionado);
                     aluguel.setVeiculo(veiculoSelecionado);
                     aluguel.setQuantidadeDias(quantidadeDias); 
-                    alugueisList.add(aluguel);
+                    aluguel.setTotalAluguel(aluguel.getVeiculo().getValorDiaria()*aluguel.getQuantidadeDias());
+                    
+                    aluguelService.salvar(aluguel);
+
                                         
                     aluguelService.mostrarDadosAluguel(aluguel);
                     System.out.println("\nPressione Enter para continuar:");
                     scanner.nextLine();
-                                        
+                    
+                scanner.nextLine();                        
                 break;
 
                 case 6:
@@ -170,16 +173,20 @@ public class RentCar {
                     System.out.println("Cliente\t\tVeículo\t\t\tDias\t\tValor");
                     System.out.println("------------------------------------------------------------");
 
-                    for (Aluguel aluguelRealizado : alugueisList) {
+                    for (Aluguel aluguelRealizado : aluguelService.listaAlugueis()) {
+
+                        Cliente cliente = clienteService.buscarPorId(aluguelRealizado.getCliente().getId());
+                        Veiculo veiculo = veiculoService.buscarPorId(aluguelRealizado.getVeiculo().getId());
+
                         System.out.println(
-                        aluguelRealizado.getCliente().getNome() + "\t\t" +
-                        aluguelRealizado.getVeiculo().getModelo() + "\t\t\t" +
+                        cliente.getNome() + "\t\t" +
+                        veiculo.getModelo() + "\t\t\t" +
                         aluguelRealizado.getQuantidadeDias() + "\t\t" +
                         aluguelRealizado.getTotalAluguel()
                     );
-                    scanner.nextLine();
                 }
-                    break;
+                scanner.nextLine();
+                break;
 
                 case 7: 
                     Utilitarios.limparTela();

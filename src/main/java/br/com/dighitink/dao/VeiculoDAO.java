@@ -62,7 +62,7 @@ public class VeiculoDAO {
         ConnectionFactory factory = new ConnectionFactory();
         Connection connection = factory.abreConexao();
 
-        PreparedStatement pstm = connection.prepareStatement("SELECT id, modelo, marca, ano FROM veiculos WHERE id = ?");
+        PreparedStatement pstm = connection.prepareStatement("SELECT id, modelo, marca, ano, valordiaria FROM veiculos WHERE id = ?");
         pstm.setInt(1, id);
         pstm.execute();
 
