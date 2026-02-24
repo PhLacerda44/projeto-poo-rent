@@ -35,7 +35,7 @@ public class ClienteDAO {
         ConnectionFactory factory = new ConnectionFactory();	
 		Connection connection = factory.abreConexao();
 
-        PreparedStatement pstm = connection.prepareStatement("SELECT id, nome, idade, documento FROM clientes");
+        PreparedStatement pstm = connection.prepareStatement("SELECT id, nome, idade, documento FROM clientes ORDER BY id");
         pstm.execute();
 
         ResultSet rst = pstm.getResultSet();

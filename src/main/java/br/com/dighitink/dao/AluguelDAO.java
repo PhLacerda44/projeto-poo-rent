@@ -19,7 +19,7 @@ public class AluguelDAO {
         ConnectionFactory factory = new ConnectionFactory();
         Connection connection = factory.abreConexao();
 
-        PreparedStatement pstm = connection.prepareStatement( "INSERT INTO aluguel (id_cliente, id_veiculo, quantidadedias, totalaluguel) VALUES (?, ?, ?, ?)" );
+        PreparedStatement pstm = connection.prepareStatement( "INSERT INTO aluguel (id_cliente, id_veiculo, quantida_dias, total_aluguel) VALUES (?, ?, ?, ?)" );
 
         pstm.setInt(1, aluguel.getCliente().getId());
         pstm.setInt(2, aluguel.getVeiculo().getId());
@@ -39,11 +39,10 @@ public class AluguelDAO {
         ConnectionFactory factory = new ConnectionFactory();
         Connection connection = factory.abreConexao();
 
-        PreparedStatement pstm = connection.prepareStatement("SELECT id, id_cliente, id_veiculo, quantidadedias, totalaluguel FROM aluguel");
+        PreparedStatement pstm = connection.prepareStatement("SELECT id, id_cliente, id_veiculo, quantida_dias, total_aluguel FROM aluguel");
 
         pstm.execute();
         ResultSet rst = pstm.getResultSet();
-
         while (rst.next()) {
 
             Aluguel aluguel = new Aluguel();
@@ -58,12 +57,10 @@ public class AluguelDAO {
             veiculo.setId(rst.getInt("id_veiculo"));
             aluguel.setVeiculo(veiculo);
 
-            aluguel.setQuantidadeDias(rst.getInt("quantidadedias"));
-            aluguel.setTotalAluguel(rst.getDouble("totalaluguel"));
+            aluguel.setQuantidadeDias(rst.getInt("quantida_dias"));
 
             listaAlugueis.add(aluguel);
         }
-
         rst.close();
         pstm.close();
         connection.close();
@@ -78,7 +75,7 @@ public class AluguelDAO {
         ConnectionFactory factory = new ConnectionFactory();
         Connection connection = factory.abreConexao();
 
-        PreparedStatement pstm = connection.prepareStatement( "SELECT id, id_cliente, id_veiculo, quantidadedias, totalaluguel FROM aluguel WHERE id = ?" );
+        PreparedStatement pstm = connection.prepareStatement( "SELECT id, id_cliente, id_veiculo, quantida_dias, total_aluguel FROM aluguel WHERE id = ?" );
 
         pstm.setInt(1, id);
         pstm.execute();
@@ -97,8 +94,8 @@ public class AluguelDAO {
             veiculo.setId(rst.getInt("id_veiculo"));
             aluguel.setVeiculo(veiculo);
 
-            aluguel.setQuantidadeDias(rst.getInt("quantidadedias"));
-            aluguel.setTotalAluguel(rst.getDouble("totalaluguel"));
+            aluguel.setQuantidadeDias(rst.getInt("quantida_dias"));
+            aluguel.setTotalAluguel(rst.getDouble("total_aluguel"));
         }
 
         rst.close();

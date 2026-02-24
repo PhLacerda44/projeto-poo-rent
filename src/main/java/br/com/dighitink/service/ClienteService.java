@@ -47,10 +47,8 @@ public class ClienteService {
     }
 
     public List<Cliente> listarClientes() throws SQLException {
-
         ClienteDAO clienteDAO = new ClienteDAO();
         return clienteDAO.listarTodos();
-
     }
 
     public Cliente buscarPorId(Integer id) throws SQLException{

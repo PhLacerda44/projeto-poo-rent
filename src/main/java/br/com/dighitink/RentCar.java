@@ -22,13 +22,13 @@ public class RentCar {
     public static void main(String[] args) throws IOException, InterruptedException, SQLException {
 
         Scanner scanner = new Scanner(System.in);
-        ArrayList<Cliente> clientesList = new ArrayList<>();
-        ArrayList<Veiculo> veiculoList = new ArrayList<>();
+        //ArrayList<Cliente> clientesList = new ArrayList<>();
+        //ArrayList<Veiculo> veiculoList = new ArrayList<>();
         ArrayList<Aluguel> alugueisList = new ArrayList<>();
 
         ClienteService clienteService = new ClienteService();
         VeiculoService veiculoService = new VeiculoService();
-        AluguelService aluguelService = new AluguelService();
+        AluguelService aluguelService = new AluguelService(clienteService);
 
         while (true) {
             
@@ -126,17 +126,17 @@ public class RentCar {
 
                     aluguelService.imprimeCabecalhoAluguelCliente();
 
-                    aluguelService.getListaClientes(scanner,clientesList);
+                    aluguelService.getListaClientes(scanner);
 
-                    Cliente clienteSelecionado =  aluguelService.selecionaClienteDaLista(scanner,clientesList);
+                    Cliente clienteSelecionado =  aluguelService.selecionaClienteDaLista(scanner);
 
                     Utilitarios.limparTela();
 
                     aluguelService.imprimeCabecalhoAluguelveiculo();
 
-                    aluguelService.imprimeListaVeiculos(veiculoList);
+                    aluguelService.imprimeListaVeiculos(scanner);
 
-                    Veiculo veiculoSelecionado = aluguelService.selecionaVeiculoDaLista(scanner, veiculoList);
+                    Veiculo veiculoSelecionado = aluguelService.selecionaVeiculoDaLista(scanner);
 
                     Utilitarios.limparTela();
 
@@ -153,7 +153,7 @@ public class RentCar {
                     aluguel.setQuantidadeDias(quantidadeDias); 
                     alugueisList.add(aluguel);
                                         
-                    aluguel.mostrarDadosAluguel();
+                    aluguelService.mostrarDadosAluguel(aluguel);
                     System.out.println("\nPressione Enter para continuar:");
                     scanner.nextLine();
                                         
@@ -175,7 +175,7 @@ public class RentCar {
                         aluguelRealizado.getCliente().getNome() + "\t\t" +
                         aluguelRealizado.getVeiculo().getModelo() + "\t\t\t" +
                         aluguelRealizado.getQuantidadeDias() + "\t\t" +
-                        aluguelRealizado.totalapagar() 
+                        aluguelRealizado.getTotalAluguel()
                     );
                     scanner.nextLine();
                 }
