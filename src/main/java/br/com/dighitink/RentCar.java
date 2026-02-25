@@ -40,11 +40,13 @@ public class RentCar {
 
             System.out.println("1 - Cadastrar clientes: ");
             System.out.println("2 - Visualizar Clientes: ");
-            System.out.println("3 - Cadastrar Veículo: ");
-            System.out.println("4 - Visualizar Veículo: ");
-            System.out.println("5 - Aluguel de Veículos");
-            System.out.println("6 - Visualizar Aluguéis: ");
-            System.out.println("7 - Sair do Sistema: ");
+            System.out.println("3 - Deletar Clientes: ");
+            System.out.println("4 - Cadastrar Veículo: ");
+            System.out.println("5 - Visualizar Veículo: ");
+            System.out.println("6 - Deletar Veículos: ");
+            System.out.println("7 - Aluguel de Veículos");
+            System.out.println("8 - Visualizar Aluguéis: ");
+            System.out.println("9 - Sair do Sistema: ");
 
             System.out.print("Selecione uma opção: ");
             int marcar = scanner.nextInt();
@@ -89,6 +91,21 @@ public class RentCar {
 
                 case 3:
                     Utilitarios.limparTela();
+          
+                    clientes = clienteService.listarClientes();
+
+                    System.out.print("Digite o ID para excluir: ");
+                    int id = scanner.nextInt();
+
+                    aluguelService.ExcluirAluguel(id);
+                    //System.out.println("Realizado com sucesso");
+
+                    clienteService.excluirCliente(id);
+                    System.out.println("Exclusão Realizado com sucesso");
+                    break;
+
+                case 4:
+                    Utilitarios.limparTela();
 
                     Veiculo veiculoinput = veiculoService.gerarESalvarVeiculo();
                     if (veiculoinput==null) break;
@@ -99,7 +116,7 @@ public class RentCar {
 
                     break;
 
-                case 4:
+                case 5:
                     Utilitarios.limparTela();
                     List<Veiculo> veiculos = veiculoService.listarVeiculos();
 
@@ -120,7 +137,10 @@ public class RentCar {
                     scanner.nextLine();
                     break;
 
-                case 5:
+                case 6:
+                     Utilitarios.limparTela();
+
+                case 7:
                     Utilitarios.limparTela();
 
                     aluguelService.imprimeCabecalhoAluguelCliente();
@@ -162,7 +182,7 @@ public class RentCar {
                 scanner.nextLine();                        
                 break;
 
-                case 6:
+                case 8:
                     Utilitarios.limparTela();
 
                     //Visualização dos Aluguéis, quantidade de dias e e valor
@@ -188,7 +208,7 @@ public class RentCar {
                 scanner.nextLine();
                 break;
 
-                case 7: 
+                case 9: 
                     Utilitarios.limparTela();
                         System.out.println("Aperte Enter para sair do Sistema.");
                         scanner.nextLine();

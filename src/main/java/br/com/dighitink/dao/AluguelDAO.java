@@ -106,4 +106,22 @@ public class AluguelDAO {
 
         return aluguel;
     }
+
+    public void deletarAluguel(int id) throws SQLException{
+
+        String sql = "DELETE FROM aluguel WHERE id = ?";
+
+        ConnectionFactory factory = new ConnectionFactory();	
+		Connection connection = factory.abreConexao();
+        
+        PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm = connection.prepareStatement(sql);
+            pstm.setInt(1, id);
+            
+            pstm.execute();
+            pstm.close();
+            connection.close();
+   
+
+    }
 }

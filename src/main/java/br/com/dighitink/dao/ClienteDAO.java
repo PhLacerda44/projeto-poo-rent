@@ -84,4 +84,22 @@ public class ClienteDAO {
         return cliente;
 
     }
+
+   public void deletar(int id) throws SQLException {
+
+
+        String sql = "DELETE FROM clientes WHERE id = ?";
+
+        ConnectionFactory factory = new ConnectionFactory();	
+		Connection connection = factory.abreConexao();
+        
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm = connection.prepareStatement(sql);
+        pstm.setInt(1, id);
+        
+        pstm.execute();
+        pstm.close();
+        connection.close();
+   }
 }

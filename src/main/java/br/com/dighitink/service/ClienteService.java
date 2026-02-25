@@ -79,4 +79,10 @@ public class ClienteService {
         System.out.println(clienteSelecionado.getNome());
            return clienteSelecionado;
        }
+
+
+    public void excluirCliente(int id) throws SQLException {
+        ClienteDAO clienteDAO = new ClienteDAO();
+        clienteDAO.deletar(id);
+    }
 }
