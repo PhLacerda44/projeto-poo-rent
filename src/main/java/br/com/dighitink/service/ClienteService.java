@@ -56,8 +56,6 @@ public class ClienteService {
         return clienteDAO.buscarPorId(id);
     }
 
- /** Método com o código de cadastro da minha lista de clientes 
-     * @throws SQLException */
     public void getListaClientes(Scanner scanner) throws SQLException {
 
         ClienteService clienteService = new ClienteService();
@@ -80,9 +78,14 @@ public class ClienteService {
            return clienteSelecionado;
        }
 
-
     public void excluirCliente(int id) throws SQLException {
+
         ClienteDAO clienteDAO = new ClienteDAO();
         clienteDAO.deletar(id);
+    }
+
+     public void atualizarCliente(Cliente cliente) throws SQLException {
+        ClienteDAO clienteDAO = new ClienteDAO();
+        clienteDAO.atualizar(cliente);
     }
 }

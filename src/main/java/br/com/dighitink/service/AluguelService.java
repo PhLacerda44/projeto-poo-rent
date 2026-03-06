@@ -65,7 +65,6 @@ public class AluguelService {
             AluguelDAO aluguelDAO = new AluguelDAO();
             aluguelDAO.salvar(aluguel);
         }
-
       
       public void ExcluirAluguel(int id) throws SQLException {
         AluguelDAO aluguelDAO = new AluguelDAO();

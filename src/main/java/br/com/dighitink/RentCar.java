@@ -40,13 +40,15 @@ public class RentCar {
 
             System.out.println("1 - Cadastrar clientes: ");
             System.out.println("2 - Visualizar Clientes: ");
-            System.out.println("3 - Deletar Clientes: ");
-            System.out.println("4 - Cadastrar Veículo: ");
-            System.out.println("5 - Visualizar Veículo: ");
-            System.out.println("6 - Deletar Veículos: ");
-            System.out.println("7 - Aluguel de Veículos");
-            System.out.println("8 - Visualizar Aluguéis: ");
-            System.out.println("9 - Sair do Sistema: ");
+            System.out.println("3 - Update Clientes: ");
+            System.out.println("4 - Deletar Clientes: ");
+            System.out.println("5 - Cadastrar Veículo: ");
+            System.out.println("6 - Visualizar Veículo: ");
+            System.out.println("7 - Update Veículo: ");
+            System.out.println("8 - Deletar Veículos: ");
+            System.out.println("9 - Aluguel de Veículos");
+            System.out.println("10- Visualizar Aluguéis: ");
+            System.out.println("11- Sair do Sistema: ");
 
             System.out.print("Selecione uma opção: ");
             int marcar = scanner.nextInt();
@@ -90,6 +92,36 @@ public class RentCar {
                     break;
 
                 case 3:
+
+                    Utilitarios.limparTela();
+
+                    System.out.print("Digite o ID do cliente para atualizar: ");
+                    int idAtualizar = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.print("Novo nome: ");
+                    String nome = scanner.nextLine();
+
+                    System.out.print("Nova idade: ");
+                    int idade = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.print("Novo documento: ");
+                    String documento = scanner.nextLine();
+
+                    Cliente cliente = new Cliente();
+                    cliente.setId(idAtualizar);
+                    cliente.setNome(nome);
+                    cliente.setIdade(idade);
+                    cliente.setDocumento(documento);
+
+                    clienteService.atualizarCliente(cliente);
+
+                    System.out.println("Cliente atualizado com sucesso!");
+
+                break;
+
+                case 4:
                     Utilitarios.limparTela();
           
                     clientes = clienteService.listarClientes();
@@ -98,13 +130,12 @@ public class RentCar {
                     int id = scanner.nextInt();
 
                     aluguelService.ExcluirAluguel(id);
-                    //System.out.println("Realizado com sucesso");
 
                     clienteService.excluirCliente(id);
-                    System.out.println("Exclusão Realizado com sucesso");
+                    System.out.println("Exclusão Realizada com sucesso");
                     break;
 
-                case 4:
+                case 5:
                     Utilitarios.limparTela();
 
                     Veiculo veiculoinput = veiculoService.gerarESalvarVeiculo();
@@ -116,7 +147,7 @@ public class RentCar {
 
                     break;
 
-                case 5:
+                case 6:
                     Utilitarios.limparTela();
                     List<Veiculo> veiculos = veiculoService.listarVeiculos();
 
@@ -137,10 +168,51 @@ public class RentCar {
                     scanner.nextLine();
                     break;
 
-                case 6:
+                case 7:
+
+                    Utilitarios.limparTela();
+
+                    System.out.print("Digite o ID do veículo para atualizar: ");
+                    int idAtualizar1 = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.print("Novo Modelo: ");
+                    String modelo = scanner.nextLine();
+
+                    System.out.print("Nova marca: ");
+                    String marca = scanner.nextLine();
+
+                    System.out.print("Novo ano: ");
+                    int ano = scanner.nextInt();
+
+                    Veiculo veiculo = new Veiculo();
+                    veiculo.setId(idAtualizar1);
+                    veiculo.setModelo(modelo);
+                    veiculo.setMarca(marca);
+                    veiculo.setAno(ano);
+
+                    veiculoService.atualizarVeiculo(veiculo);
+
+                    System.out.println("Veículo atualizado com sucesso!");
+
+                break;
+
+
+                case 8:
                      Utilitarios.limparTela();
 
-                case 7:
+                     veiculos = veiculoService.listarVeiculos();
+
+                     System.out.println("DIigite po ID para excluir");
+                     id = scanner.nextInt();
+
+                     aluguelService.ExcluirAluguel(id);
+
+                     veiculoService.excluirVeiculo(id);
+                     System.out.println("Exclusão Realizada com sucesso");
+                     break;
+
+                case 9:
                     Utilitarios.limparTela();
 
                     aluguelService.imprimeCabecalhoAluguelCliente();
@@ -182,7 +254,7 @@ public class RentCar {
                 scanner.nextLine();                        
                 break;
 
-                case 8:
+                case 10:
                     Utilitarios.limparTela();
 
                     //Visualização dos Aluguéis, quantidade de dias e e valor
@@ -195,12 +267,12 @@ public class RentCar {
 
                     for (Aluguel aluguelRealizado : aluguelService.listaAlugueis()) {
 
-                        Cliente cliente = clienteService.buscarPorId(aluguelRealizado.getCliente().getId());
-                        Veiculo veiculo = veiculoService.buscarPorId(aluguelRealizado.getVeiculo().getId());
+                        Cliente cliente1 = clienteService.buscarPorId(aluguelRealizado.getCliente().getId());
+                        Veiculo veiculo1 = veiculoService.buscarPorId(aluguelRealizado.getVeiculo().getId());
 
                         System.out.println(
-                        cliente.getNome() + "\t\t" +
-                        veiculo.getModelo() + "\t\t\t" +
+                        cliente1.getNome() + "\t\t" +
+                        veiculo1.getModelo() + "\t\t\t" +
                         aluguelRealizado.getQuantidadeDias() + "\t\t" +
                         aluguelRealizado.getTotalAluguel()
                     );
@@ -208,7 +280,7 @@ public class RentCar {
                 scanner.nextLine();
                 break;
 
-                case 9: 
+                case 11: 
                     Utilitarios.limparTela();
                         System.out.println("Aperte Enter para sair do Sistema.");
                         scanner.nextLine();

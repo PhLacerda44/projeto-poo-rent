@@ -102,4 +102,24 @@ public class ClienteDAO {
         pstm.close();
         connection.close();
    }
+   
+   public void atualizar(Cliente cliente) throws SQLException {
+
+        String sql = "UPDATE clientes SET nome = ?, idade = ?, documento = ? WHERE id = ?";
+
+        ConnectionFactory factory = new ConnectionFactory();
+        Connection connection = factory.abreConexao();
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, cliente.getNome());
+        pstm.setInt(2, cliente.getIdade());
+        pstm.setString(3, cliente.getDocumento());
+        pstm.setInt(4, cliente.getId());
+
+        pstm.executeUpdate();
+
+        pstm.close();
+        connection.close();
+    }
 }

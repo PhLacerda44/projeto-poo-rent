@@ -82,4 +82,42 @@ public class VeiculoDAO {
         connection.close();
         return veiculo;
     }
+
+    public void deletar(int id) throws SQLException {
+
+
+        String sql = "DELETE FROM veiculos WHERE id = ?";
+
+        ConnectionFactory factory = new ConnectionFactory();	
+		Connection connection = factory.abreConexao();
+        
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm = connection.prepareStatement(sql);
+        pstm.setInt(1, id);
+        
+        pstm.execute();
+        pstm.close();
+        connection.close();
+   }
+
+   public void atualizar(Veiculo veiculo) throws SQLException {
+
+        String sql = "UPDATE veiculos SET modelo = ?, marca = ?, ano = ? WHERE id = ?";
+
+        ConnectionFactory factory = new ConnectionFactory();
+        Connection connection = factory.abreConexao();
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, veiculo.getModelo());
+        pstm.setString(2, veiculo.getMarca());
+        pstm.setInt(3, veiculo.getAno());
+        pstm.setInt(4, veiculo.getId());
+
+        pstm.executeUpdate();
+
+        pstm.close();
+        connection.close();
+    }
 }

@@ -72,4 +72,14 @@ public class VeiculoService {
       System.out.println(veiculoSelecionado.getModelo());
       return veiculoSelecionado;
       }
+
+   public void excluirVeiculo(int id) throws SQLException {
+      VeiculoDAO veiculoDAO = new VeiculoDAO();
+      veiculoDAO.deletar(id);
+    }
+
+    public void atualizarVeiculo(Veiculo veiculo) throws SQLException {
+      VeiculoDAO veiculoDAO = new VeiculoDAO();
+      veiculoDAO.atualizar(veiculo);
+    }
 }
